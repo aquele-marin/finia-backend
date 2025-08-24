@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from flaskr.gen.chain import create_graph
 
 
 def create_app(test_config=None):
@@ -24,9 +25,17 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    # Initialize graph
+    graph = create_graph()
+    # runnable = graph.with_types(input_type=ChatInputType, output_type=dict)
+
     # a simple page that says hello
     @app.route('/hello')
     def hello():
-        return 'Hello, World!'
+        initial_state = {"messages": [("user", "Give me daily Apple stock prices")]}
+        out = graph.invoke(initial_state, config={"configurable": {"thread_id": "1"}})
+        # out = graph.invoke("Give me daily IBM stock prices")
+        print(out["messages"][-1])
+        return str(out["messages"][-1].content)
 
     return app
