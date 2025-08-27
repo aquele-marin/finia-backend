@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask
-from flaskr.gen.chain import create_graph
+from src.gen.chain import create_graph
 
 
 def create_app(test_config=None):
