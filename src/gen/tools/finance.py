@@ -22,7 +22,6 @@ def stock_data(symbol: str) -> dict:
         raise ValueError("Missing ALPHAVANTAGE_API_KEY secre.")
     
     alphavantage_url = f"https://alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={alphavantage_api_key}"
-    print(alphavantage_api_key)
     alphavantage_response = requests.get(alphavantage_url)
     if not alphavantage_response.ok:
         raise ValueError("Failed to get AlphaVantage data.")
