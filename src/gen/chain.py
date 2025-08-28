@@ -8,7 +8,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.graph import END, START, StateGraph, add_messages
 from langgraph.prebuilt import ToolNode, tools_condition
 
-from flaskr.gen.tools.finance import stock_data
+from src.gen.tools.finance import stock_data
 # from gen_ui_backend.tools.github import github_repo
 # from gen_ui_backend.tools.invoice import invoice_parser
 # from gen_ui_backend.tools.weather import weather_data
